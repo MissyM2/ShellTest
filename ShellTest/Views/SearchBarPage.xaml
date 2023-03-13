@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:ShellTest.Models"
+             xmlns:viewmodels="clr-namespace:ShellTest.ViewModels"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             x:Class="ShellTest.Views.SearchBarPage"
+             x:DataType="viewmodels:SearchBarViewModel"
+             Title="SearchBarPage">
+
+    <StackLayout Padding="10,0,10,0">
+        <Button Text="Get Fruits" 
+                Command="{Binding GetFruitsCommand}"
+                IsEnabled="{Binding IsNotBusy}"
+                BackgroundColor="PInk"
+
+                Margin="8"/>
+        <!--<SearchBar TextChanged="SearchBar_TextChanged" BackgroundColor="White"></SearchBar>-->
+        <!--<SearchBar x:Name="searchBar"
+                   HorizontalOptions="Fill"
+                   VerticalOptions="CenterAndExpand"
+                   Placeholder="Search fruits..."
+                   SearchCommand="{Binding PerformSearch}" 
+                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>-->
+
+
+                <CollectionView x:Name="searchResults"
+                                ItemsSource="{Binding SearchResults}"
+                                SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Fruit">
+                            <Grid Padding="10">
+                                <Frame HeightRequest="125">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:SearchBarViewModel}}, Path=GoToDetailsCommand}"
+                                    CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                    <Grid Padding="0" ColumnDefinitions="*">
+                                        <VerticalStackLayout
+                                            VerticalOptions="Center"
+                                            Grid.Column="1"
+                                            Padding="10">
+                                            <Label Text="{Binding Name}" FontSize="20"
+                                                   FontAttributes="Bold"/>
+                                            <Label Text="{Binding Color}" FontSize="20"
+                                                   FontAttributes="Bold" />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+        
+    </StackLayout>
+</ContentPage>

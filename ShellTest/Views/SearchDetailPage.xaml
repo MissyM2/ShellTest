@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShellTest.Views.SearchDetailPage"
+             xmlns:viewmodel="clr-namespace:ShellTest.ViewModels"
+             x:DataType="viewmodel:SearchDetailViewModel"
+             Title="SearchDetailPage">
+
+         <Grid RowDefinitions="Auto,Auto,*">
+
+            <Label Grid.Row="1"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   Text="{Binding Fruit.Name}" 
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,8"/>
+
+            <VerticalStackLayout Grid.Row="2" Padding="10" Spacing="10">
+
+                <Label Text="{Binding Fruit.Name}" />
+                <Label Text="{Binding Fruit.Color}" />
+            </VerticalStackLayout>
+        </Grid>
+</ContentPage>

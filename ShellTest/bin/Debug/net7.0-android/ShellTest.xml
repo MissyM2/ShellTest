@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ShellTest</name>
+    </assembly>
+    <members>
+        <member name="P:ShellTest.ViewModels.BaseViewModel.IsBusy">
+            <inheritdoc cref="F:ShellTest.ViewModels.BaseViewModel.isBusy"/>
+        </member>
+        <member name="P:ShellTest.ViewModels.BaseViewModel.Title">
+            <inheritdoc cref="F:ShellTest.ViewModels.BaseViewModel.title"/>
+        </member>
+        <member name="F:ShellTest.ViewModels.SearchBarViewModel.goToDetailsCommand">
+            <summary>The backing field for <see cref="P:ShellTest.ViewModels.SearchBarViewModel.GoToDetailsCommand"/>.</summary>
+        </member>
+        <member name="P:ShellTest.ViewModels.SearchBarViewModel.GoToDetailsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:ShellTest.ViewModels.SearchBarViewModel.GoToDetails(ShellTest.Models.Fruit)"/>.</summary>
+        </member>
+        <member name="F:ShellTest.ViewModels.SearchBarViewModel.getFruitsCommand">
+            <summary>The backing field for <see cref="P:ShellTest.ViewModels.SearchBarViewModel.GetFruitsCommand"/>.</summary>
+        </member>
+        <member name="P:ShellTest.ViewModels.SearchBarViewModel.GetFruitsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:ShellTest.ViewModels.SearchBarViewModel.GetFruitsAsync"/>.</summary>
+        </member>
+    </members>
+</doc>
