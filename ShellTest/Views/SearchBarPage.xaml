@@ -9,12 +9,6 @@
              Title="SearchBarPage">
 
     <StackLayout Padding="10,0,10,0">
-        <Button Text="Get Fruits" 
-                Command="{Binding GetFruitsCommand}"
-                IsEnabled="{Binding IsNotBusy}"
-                BackgroundColor="PInk"
-
-                Margin="8"/>
         <!--<SearchBar TextChanged="SearchBar_TextChanged" BackgroundColor="White"></SearchBar>-->
         <!--<SearchBar x:Name="searchBar"
                    HorizontalOptions="Fill"

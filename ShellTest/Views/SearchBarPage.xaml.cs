@@ -11,5 +11,16 @@ public partial class SearchBarPage : ContentPage
         InitializeComponent();
         BindingContext = vm;
     }
+
+    protected override async void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (BindingContext is SearchBarViewModel vm)
+        {
+            await vm.InitializeAsync();
+        }
+    }
+
         
 }

@@ -24,6 +24,11 @@ namespace ShellTest.ViewModels
             this.fruitService = fruitService;
         }
 
+        public async Task InitializeAsync()
+        {
+            await GetFruits();
+        }
+
         [RelayCommand]
         async Task GoToDetails(Fruit fruit)
         {
