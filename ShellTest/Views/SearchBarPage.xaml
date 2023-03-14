@@ -10,15 +10,20 @@
 
     <StackLayout Padding="10,0,10,0">
         <!--<SearchBar TextChanged="SearchBar_TextChanged" BackgroundColor="White"></SearchBar>-->
-        <!--<SearchBar x:Name="searchBar"
+        <Grid RowDefinitions="100,auto">
+        <SearchBar x:Name="searchBar"
+                   Grid.Row="0"
                    HorizontalOptions="Fill"
                    VerticalOptions="CenterAndExpand"
                    Placeholder="Search fruits..."
-                   SearchCommand="{Binding PerformSearch}" 
-                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>-->
+                   BackgroundColor="Pink"
+                   TextChanged="searchBar_TextChanged"
+                   SearchCommand="{Binding PerformSearchCommand}"
+                   SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
 
 
-                <CollectionView x:Name="searchResults"
+                <CollectionView x:Name="FruitsCollectionView"
+                                Grid.Row="1"
                                 ItemsSource="{Binding SearchResults}"
                                 SelectionMode="None">
                     <CollectionView.ItemTemplate>
@@ -46,6 +51,6 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-        
+        </Grid>
     </StackLayout>
 </ContentPage>

@@ -22,5 +22,17 @@ public partial class SearchBarPage : ContentPage
         }
     }
 
+    async void searchBar_TextChanged(System.Object sender, Microsoft.Maui.Controls.TextChangedEventArgs e)
+    {
+        if (e.NewTextValue == "")
+        {
+            if (BindingContext is SearchBarViewModel vm)
+            {
+
+                await vm.PerformSearch("");
+            }
+        }
         
+    }
+
 }

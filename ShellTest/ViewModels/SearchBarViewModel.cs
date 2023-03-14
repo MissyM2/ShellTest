@@ -13,7 +13,8 @@ namespace ShellTest.ViewModels
 {
     public partial class SearchBarViewModel : BaseViewModel
     {
-        public ObservableCollection<Fruit> SearchResults { get; } = new();
+        public ObservableCollection<Fruit> SourceItems { get; set; } = new();
+        public ObservableCollection<Fruit> SearchResults { get; set; } = new();
 
 
         FruitService fruitService;
@@ -26,7 +27,7 @@ namespace ShellTest.ViewModels
 
         public async Task InitializeAsync()
         {
-            await GetFruits();
+            await GetAllFruits();
         }
 
         [RelayCommand]
@@ -41,14 +42,35 @@ namespace ShellTest.ViewModels
             });
         }
 
-        //[RelayCommand]
-        //async Task PerformSearch(string query)
-        //{
-        //    SearchResults = await fruitService.GetFruits();
-        //}
+        [RelayCommand]
+        public async Task PerformSearch(string searchTerm)
+        {
+
+            if (string.IsNullOrWhiteSpace(searchTerm))
+            {
+                searchTerm = string.Empty;
+            }
+
+            searchTerm = searchTerm.ToLower();
+            var filteredItems = SourceItems.Where(value => value.Name.ToLower().Contains(searchTerm)).ToList();
+
+            foreach (var value in SourceItems)
+            {
+                if (!filteredItems.Contains(value))
+                {
+                    SearchResults.Remove(value);
+                }
+                else if (!SearchResults.Contains(value))
+                {
+                    SearchResults.Add(value);
+                }
+            }
+
+           
+        }
 
         [RelayCommand]
-        async Task GetFruits()
+        async Task GetAllFruits()
         {
             if (IsBusy)
                 return;
@@ -58,11 +80,17 @@ namespace ShellTest.ViewModels
                 IsBusy = true;
                 var fruits = await fruitService.GetFruits();
 
+                if (SourceItems.Count != 0)
+                    SourceItems.Clear();
+
                 if (SearchResults.Count != 0)
                     SearchResults.Clear();
 
                 foreach (var fruit in fruits)
+                {
+                    SourceItems.Add(fruit);
                     SearchResults.Add(fruit);
+                }
 
             }
             catch (Exception ex)
@@ -76,5 +104,6 @@ namespace ShellTest.ViewModels
             }
 
         }
+
     }
 }
