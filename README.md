@@ -6,23 +6,19 @@ This small .Net Maui app demonstrates implementation of a search bar with a main
  
 ### Structure
 Solution Name: ShellTest
-Projects:
-- DataAccessSamples
+Project
+- ShellTest
 
-Folders
+### Folders
  - /Views
  - /ViewModels
  - /Services
  - /Models
  - /Data
- - /Resources\Raw\casedata.json" />
+ - /Resources\Raw\fruitdata.json" />
  - /Controls
 
 
 ### Libraries
-- DataAccessSamples
-  
   - CommunityToolkit.Mvvm
-  - sqlite-net-pcl
-  - SQLitePCLRaw.bundle_green
-  - CommunityToolkit.Maui
+  - Microsoft.Extensions.Logging.Debug
